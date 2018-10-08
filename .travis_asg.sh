@@ -9,8 +9,8 @@ aws autoscaling update-auto-scaling-group --auto-scaling-group-name interview-we
 echo "Entering waiting loop..."
 while [ "$(aws elb describe-instance-health --load-balancer-name interview-webapp-elb --query 'InstanceStates[*].[InstanceId, State]' --output text | grep InService | awk '{print $1};' | wc -w)" -lt "2" ];
 do
-  echo "Waiting for other instance to be healthy, sleeping 1 minute..."
-  sleep 1m
+  echo "Waiting for other instance to be healthy, sleeping 5 seconds..."
+  sleep 5
 done
 echo "Complete!"
 
