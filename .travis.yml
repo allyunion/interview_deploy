@@ -10,6 +10,8 @@ install:
   - pip install awscli
 
 script:
-  - aws autoscaling update-auto-scaling-group --auto-scaling-group-name interview-webapp-asg --max-size 3 --desired-capacity 3
-  - sleep 5m
-  - aws autoscaling update-auto-scaling-group --auto-scaling-group-name interview-webapp-asg --max-size 2 --desired-capacity 1  
+  - export AWS_ACCESS_KEY_ID
+  - export AWS_SECRET_ACCESS_KEY
+  - export AWS_DEFAULT_REGION
+  - chmod +x .travis_asg.sh
+  - ./.travis_asg.sh
