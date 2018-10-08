@@ -10,4 +10,6 @@ install:
   - pip install awscli
 
 script:
-  - aws autoscaling describe-auto-scaling-groups
+  - aws autoscaling update-auto-scaling-group --auto-scaling-group-name interview-webapp-asg --max-size 3 --desired-capacity 3
+  - sleep 5m
+  - aws autoscaling update-auto-scaling-group --auto-scaling-group-name interview-webapp-asg --max-size 2 --desired-capacity 1  
